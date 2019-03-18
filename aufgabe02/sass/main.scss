@@ -1,6 +1,25 @@
 @import "compass/reset";
 @import "compass/css3";
 
+/*Aufgabe 2a. Farbenvariablen und Abstandsvariablen.*/
+
+$Error: #d9534f;
+
+$Warning: #f0ad4e;
+
+$Success:#5cb85c;
+
+$border: 1px solid #000;
+
+$padding: 5px;
+
+$margin: 10px 5px 10px 5px;
+
+/*Aufgabe 2b. Finde keine Beispiele zum Vererben bzw verstehe nicht was ich vererben solle*/
+
+/*Aufgabe 2c. Keine sinnvolle Verschachtelungen möglich*/
+
+
 body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -16,18 +35,18 @@ body {
 
 
 input[type="text"],input[type="password"] {
-    border:1px solid #000;
-    padding:5px;
-    margin:10px 5px 10px 5px;
+    border: $border;
+    padding:$padding;
+    margin:$margin;
 
     width: 180px;
 }
 
 input[type="submit"] {
-    border:1px solid #000;
+    border:$border;
     border-radius:0;
     background-color:#fafafa;
-    margin:10px 5px 10px 5px;
+    margin:$margin;
     cursor:pointer;
 }
 
@@ -46,30 +65,30 @@ label {
 }
 
 .feedback {
-    margin:10px 5px 10px 5px;
+    margin:$margin;
     font-size:11px;
     font-weight:600;
 
 }
 
 .feedback.error {
-    color:#d9534f;
+    color:$Error;
 }
 
 .feedback.warning {
-    color:#f0ad4e;
+    color:$Warning;
 }
 
 .feedback.success {
-    color:#5cb85c;
+    color:$Success;
 }
 
 .strengthIndicator {
-    margin:10px 5px 10px 5px;
+    margin:$margin;
     width: 200px;
-    padding:5px;
+    padding:$padding;
     height: 13px;
-    border:1px solid #d3d3d3;
+    border:$border;
 }
 
 .strengthIndicator::before {
@@ -77,25 +96,30 @@ label {
     display: block;
     height: 100%;
 
+/*Aufgabe 2d. Mixins*/
     -moz-transition-property: width;
     -o-transition-property: width;
     -webkit-transition-property: width;
     transition-property: width;
+    @include transition-property(width);
 
     -moz-transition-delay: 0;
     -o-transition-delay: 0;
     -webkit-transition-delay: 0;
     transition-delay: 0;
+    @include transition-delay(0);
 
     -moz-transition-duration: 250ms;
     -o-transition-duration: 250ms;
     -webkit-transition-duration: 250ms;
     transition-duration: 250ms;
+    @include transition-duration(250ms);
 
     -moz-transition-timing-function: linear;
     -o-transition-timing-function: linear;
     -webkit-transition-timing-function: linear;
     transition-timing-function: linear;
+    @include transition-timing-function(linear);
 }
 
 .passwordWrapper::after {
